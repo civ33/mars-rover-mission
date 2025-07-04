@@ -10,19 +10,19 @@ Requirements
 - Node.js & npm
 - MySQL or compatible database
 
-1. Clone the repository 
+1. Clone the repository:
 git clone https://github.com/your-username/mars-rover-mission.git
 
-2. And move to the folder that has just created
+2. And move to the folder that has just created: 
 cd mars-rover-mission
 
-3. Install PHP dependencies
+3. Install PHP dependencies: 
 composer install
 
-4. Copy and configure environment file
+4. Copy and configure environment file: 
 cp .env.example .env
 
-5. Adapt .env file content to your database credentials
+5. Adapt .env file content to your database credentials: 
 
 DB_CONNECTION=
 DB_HOST=
@@ -31,11 +31,11 @@ DB_DATABASE=
 DB_USERNAME=
 DB_PASSWORD=
 
-6. Generate application key
+6. Generate application key: 
 
 php artisan key:generate
 
-7. Run migrations
+7. Run migrations: 
 
 php artisan migrate
 
@@ -43,11 +43,11 @@ php artisan migrate
 
 npm run dev
 
-10. Start the development server
+10. Start the development server: 
 
 php artisan serve
 
-11. Visit the app Open http://localhost:8000 in your browser.
+11. Visit the app:  Open http://localhost:8000 in your browser.
 
 
 
