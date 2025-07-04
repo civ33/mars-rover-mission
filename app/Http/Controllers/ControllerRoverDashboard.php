@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Mission as Mission;
+use Inertia\Inertia;
 
 
 class ControllerRoverDashboard extends Controller
 {
     //
 
-    public function createMission(Request $request)
+    public function startMission(Request $request)
     {
         $mission = new Mission();
         $mission->name = $request->mission_name;
@@ -18,7 +19,11 @@ class ControllerRoverDashboard extends Controller
         $mission->rover_coor_y = 0;
         $mission->rover_z = 'N';
         $mission->save();
-        return view('play', ['mission' => $mission]);
+        return response()->json([
+            'mission' => $mission,
+            'out_of_bounds' => false,
+            'message' => '',
+        ]);
     }
 
 
@@ -111,17 +116,20 @@ class ControllerRoverDashboard extends Controller
         }
 
         if ($out_of_bounds) {
-            $data = [
+            return response()->json([
                 'mission' => $mission,
                 'message' => 'The rover cannot move outside the grid (200x200).',
                 'axis_out_of_bounds' => $axis_out_of_bounds,
-                'out_of_bounds' => $out_of_bounds
-            ];
-            return view('play', $data); 
+                'out_of_bounds' => $out_of_bounds,
+            ]);
         }
                 
         $mission->save();
-        return view('play', ['mission' => $mission, 'out_of_bounds' => $out_of_bounds, 'message' => '']);
-        
+        return response()->json([
+        'mission' => $mission,
+        'out_of_bounds' => $out_of_bounds,
+        'axis_out_of_bounds' => $axis_out_of_bounds,
+        'message' => $message,
+        ]);
     }
 }
