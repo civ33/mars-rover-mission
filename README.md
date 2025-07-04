@@ -24,14 +24,16 @@ cp .env.example .env
 
 5. Adapt .env file content to your database credentials
 
-6. Generate application key
-
 DB_CONNECTION=
 DB_HOST=
 DB_PORT=
 DB_DATABASE=
 DB_USERNAME=
 DB_PASSWORD=
+
+6. Generate application key
+
+php artisan key:generate
 
 7. Run migrations
 
